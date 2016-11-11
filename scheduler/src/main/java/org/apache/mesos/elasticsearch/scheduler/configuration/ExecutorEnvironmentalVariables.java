@@ -18,7 +18,7 @@ public class ExecutorEnvironmentalVariables {
     private static final String CONTAINER_PATH_SETTINGS = "/tmp/config";
     
     public static final String JAVA_OPTS = "JAVA_OPTS";
-    public static final String ES_HEAP = "ES_HEAP_SIZE";
+    public static final String ES_JAVA_OPTS = "ES_JAVA_OPTS";
     public static final int EXTERNAL_VOLUME_NOT_CONFIGURED = -1;
     public static final String ELASTICSEARCH_NODE_ID = "ELASTICSEARCH_NODE_ID";
 
@@ -63,7 +63,8 @@ public class ExecutorEnvironmentalVariables {
      * @param configuration
      */
     private void populateEnvMap(Configuration configuration) {
-        addToList(ES_HEAP, getHeapSpaceString(configuration));
+        String esHeapSize = getHeapSpaceString(configuration);
+        addToList(ES_JAVA_OPTS, "-Xms" + esHeapSize + " -Xmx" + esHeapSize);
         if (configuration.isFrameworkUseDocker()) {
             addToList(native_mesos_library_key, native_mesos_library_path);
         }
