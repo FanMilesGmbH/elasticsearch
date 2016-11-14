@@ -313,6 +313,7 @@ public class Configuration {
         args.add("-Edefault.cluster.name=" + getElasticsearchClusterName());
         args.add("-Edefault.node.master=true");
         args.add("-Edefault.node.data=true");
+        args.add("-Edefault.node.max_local_storage_nodes=3");
         //args.add("-Edefault.node.local=false");
         //args.add("-Edefault.index.number_of_replicas=0");
         //args.add("-Edefault.index.auto_expand_replicas=0-all");

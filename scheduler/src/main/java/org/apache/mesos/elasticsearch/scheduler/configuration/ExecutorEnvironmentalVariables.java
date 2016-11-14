@@ -109,7 +109,6 @@ public class ExecutorEnvironmentalVariables {
      * @return A string representing the java heap space.
      */
     private String getHeapSpaceString(Configuration configuration) {
-        int osRam = (int) Math.min(256.0, configuration.getMem() / 4.0);
-        return "" + ((int) configuration.getMem() - osRam) + "m";
+        return "" + (int)((int) configuration.getMem() * 0.65) + "m";
     }
 }
